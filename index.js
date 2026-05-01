@@ -30,9 +30,12 @@ app.post("/chat", async (req, res) => {
       ],
     });
 
-    res.json({
-      reply: response.choices[0].message.content
-    });
+    const reply =
+  response?.choices?.[0]?.message?.content || "No reply from AI";
+
+res.json({
+  reply
+});
 
   } catch (error) {
     console.error("ERROR:", error);
